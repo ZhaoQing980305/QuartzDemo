@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.ScheduleDao">
+    <resultMap type="com.example.demo.entity.Schedule" id="Schedule">
+        <result property="id" column="id"/>
+        <result property="cron" column="cron"/>
+
+    </resultMap>
+    <!-- 定义字段集合 -->
+    <sql id="ScheduleInformation">
+        id,cron
+    </sql>
+    <select id="findAll" resultMap="Schedule" >
+        select * from schedule
+    </select>
+
+    <!-- 刷新间隔 -->
+    <cache flushInterval="600000"/>
+</mapper>
